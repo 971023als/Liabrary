@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+
+body{
+	margin: 0;
+	padding: 0;
+	
+}
+
+td.menu01{
+
+	font-size: 16px;
+	color: #ffffff;
+	font-family: arial;
+	font-weight: bold;
+	border:solid; 
+	border-right: thick;
+	
+}
+
+td.menu02{
+
+	font-size: 12px;
+	color: #aaaaaa;
+	font-family: arial;
+	height: 30px;
+	
+}
+
+
+
+tr.menu03{
+
+	font-size: 16px;
+	color: #cee;
+	font-family: arial;
+	text-align: center;
+	
+}
+
+tr.menu04{
+	text-align: center;
+	font-size: 14px;
+	color: #fff;
+	font-family: sans-serif;
+	
+}
+
+

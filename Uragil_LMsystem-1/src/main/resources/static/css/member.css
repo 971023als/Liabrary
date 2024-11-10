@@ -1,0 +1,234 @@
+@charset "UTF-8";
+
+span.text01{
+	font-size: 14x;
+	color: #adb;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+span.text02{
+	font-size: 14x;
+	color: #ffffff;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+span.text03{
+	font-size: 18x;
+	color: #009000;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+
+input.type01{
+	
+	border: 2px solid #dfd;
+	background-color: #ffffff;
+	width : 220px;
+	padding:5px; 
+	font-family: Arial;
+	font-size: 14px
+	
+}
+
+input.button01{
+	
+	background-color: #cfd;
+	width : 280px;
+	border:2px solid #fff;
+	padding: 4px;
+	font-size: 14px;
+	font-weight: bold;
+	color: olive;
+	font-family: malgun;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+input.button01:hover {
+  border:2px solid #161;
+  background-color: #9ca;
+  color: #fff;
+}
+
+
+#textarea01{
+	border: 2px solid #c8e0e8;
+	background-color: #ffffff;
+	width : 220px;
+	padding:5px; 
+	font-family: Arial;
+	font-size: 14px	
+}
+
+
+input.button02{
+	
+	background-color: rgb(128, 64, 0);
+	width : 90px;
+	border:2px solid #fff;
+	border-radius :6px;
+	padding: 3px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+	font-family: malgun;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+input.button02:hover {
+  border:2px solid #ffffff;
+  background-color: #fa0;
+  color: white;
+}
+
+
+input.button03{
+	width : 89px;
+	border:2px solid #864;
+	background-color: #642;
+	border-radius :6px;
+	padding: 3px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+	font-family: malgun;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+input.button03:hover {
+  border:2px solid #864;
+  background-color: #432;
+  color: white;
+}
+
+#textarea02{
+	border: 2px solid #c8e0e8;
+	background-color: #ffffff;
+	width : 220px;
+	padding:5px; 
+	font-family: Arial;
+	font-size: 14px	
+}
+
+
+
+input.button04{
+	
+	width : 280px;
+	border:2px solid #421;
+	background-color: #631;
+	padding: 5px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+	font-family: malgun;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+input.button04:hover {
+  border:2px solid #421;
+  background-color: #421;
+  color: white;
+}
+
+
+input.button05{
+	
+	padding:5px;
+	width : 80px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	font-family: malgun;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+input.button05:hover {
+  border:1px solid #111;
+  background-color: #ccc;
+  font-weight: bold;
+  color: #000;
+}
+
+input.button06{
+	border:2px solid #ffffff;
+	background-color: #99acac;
+	border-radius:6px;
+	color: white;
+	width : 90px;
+	Padding: 3px;
+	font-size: 14px;
+	font-weight: bold;
+	Font-family: malgun;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+input.button06:hover {
+  border:2px solid #ffffff;
+  background-color: #99acac;
+  color: white;
+}
+
+input.button07{
+	width : 89px;
+	border:2px solid #3c6;
+	background-color: #00cc30;
+	border-radius:6px;
+	padding: 3px;
+	font-size: 12px;
+	font-weight: bold;
+	color:#fff;
+	font-family: malgun;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+input.button07:hover {
+  border:2px solid #3a3;
+  background-color: #0a3;
+  color: white;
+  
+}
+
+input.button08{
+	width : 89px;
+	border:2px solid #fff;
+	background-color: #aec;
+	border-radius:6px;
+	padding: 3px;
+	font-size: 12px;
+	font-weight: bold;
+	color:#fff;
+	font-family: malgun;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+input.button08:hover {
+  border:2px solid #3a3;
+  background-color: #0a3;
+  color: white;
+  
+}
+
+input.button09{
+	width : 89px;
+	border:2px solid #fff;
+	background-color: #aec;
+	border-radius:6px;
+	padding: 3px;
+	font-size: 12px;
+	font-weight: bold;
+	color:#fff;
+	font-family: malgun;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}

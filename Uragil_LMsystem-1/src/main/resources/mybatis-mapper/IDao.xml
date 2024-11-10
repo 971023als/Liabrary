@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0/EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.uragil.LMS.dao.IDao">
+
+	<insert id="joinDao">
+		INSERT INTO b_member (mid, mpw, mname, mphone)VALUES(#{param1},#{param2},#{param3},#{param4})
+	</insert>
+
+
+	<select id="checkIdDao" resultType="int">
+		SELECT COUNT(*) FROM b_member WHERE mid = #{param1}
+	</select>
+
+	<select id="checkPwDao" resultType="int">
+		SELECT COUNT(*) FROM b_member WHERE mid = #{param1} AND mpw = #{param2}
+	</select>
+
+	<select id="loginInfoDao" resultType="com.uragil.LMS.dto.MemberDto">
+		SELECT * FROM b_member WHERE mid = #{param1}
+	</select>
+
+	<select id="m_listDao" resultType="com.uragil.LMS.dto.MemberDto">
+		SELECT * FROM b_member
+	</select>
+	
+	<update id="infoM">
+		UPDATE b_member SET mpw=#{param1}, mname=#{param2}, mphone=#{param3} WHERE mid=#{param4} 	
+	</update>
+
+	<delete id="deleteMemDao">
+		DELETE FROM b_member WHERE mid = #{param1}	
+	</delete>
+
+
+
+<!-- book SQL -->
+	<select id="b_listDao" resultType="com.uragil.LMS.dto.BookDto">
+		SELECT * FROM b_book ORDER BY bcode DESC
+	</select>
+
+	<select id="b_listDao1" resultType="com.uragil.LMS.dto.BookDto">
+		SELECT * FROM b_book ORDER BY brcount DESC
+	</select>
+
+
+<!-- <select id="br_listDao2" resultType="com.uragil.LMS.dto.BorrowDto">
+		SELECT rdate FROM b_borrow where brbcode=#{param1}
+	</select>
+-->
+	<select id="TitleSearchlistDao" resultType="com.uragil.LMS.dto.BookDto">
+		SELECT * FROM b_book WHERE bname LIKE '%'|| #{param1} ||'%' ORDER BY bname ASC  
+	</select>
+	
+	<select id="CategoriSearchlistDao" resultType="com.uragil.LMS.dto.BookDto">
+		SELECT * FROM b_book WHERE bcategori LIKE '%'|| #{param1} ||'%' ORDER BY bcategori ASC  
+	</select>
+	
+	<select id="WriterSearchlistDao" resultType="com.uragil.LMS.dto.BookDto">
+		SELECT * FROM b_book WHERE bwriter LIKE '%'|| #{param1} ||'%' ORDER BY bwriter ASC  
+	</select>
+
+	<insert id="b_inputDao">
+		INSERT INTO b_book (bcode, bname, bcategori, bwriter)VALUES(b_book_seq.nextval, #{param1},#{param2},#{param3})
+	</insert>
+
+	<update id="bstateDao">
+		UPDATE b_book T1 SET T1.bstate = (SELECT DISTINCT T2.bstate FROM b_borrow T2 WHERE T2.brbcode = T1.bcode),T1.rdate = (SELECT DISTINCT T2.rdate FROM b_borrow T2 WHERE T2.brbcode = T1.bcode) WHERE T1.bcode IN (SELECT DISTINCT T2.brbcode FROM b_borrow T2 WHERE T2.brbcode = T1.bcode)
+	</update>
+
+	<select id="modifyViewDao" resultType="com.uragil.LMS.dto.BookDto">
+		SELECT * FROM b_book WHERE bcode = #{param1}
+	</select>
+	
+	
+	<update id="bookModifyDao">
+		UPDATE b_book SET bname=#{param1}, bcategori=#{param2}, bwriter=#{param3} WHERE bcode=#{param4} 	
+	</update>
+	
+	<update id="brcountDao">
+		UPDATE b_book SET brcount = brcount + 1  WHERE bcode = #{param1} 	
+	</update>
+		
+	
+
+<!-- borrow SQL -->	
+	<select id="br_listDao" resultType="com.uragil.LMS.dto.BorrowDto">
+		SELECT * FROM b_borrow ORDER BY sdate DESC
+	</select>
+	
+	<select id="IdSearchlistDao" resultType="com.uragil.LMS.dto.BorrowDto">
+		SELECT * FROM b_borrow WHERE brmid LIKE '%'|| #{param1} ||'%' ORDER BY brmid DESC, sdate DESC  
+	</select>    
+
+	
+	<insert id="br_inputDao">
+		INSERT INTO b_borrow(brcode, brbcode, brmid) VALUES(b_borrow_seq.nextval, #{param1}, #{param2})
+	</insert>
+
+<!-- <update id="br_updateDao">
+		UPDATE b_borrow SET bstate=#{param1}, rdate=#{param2} WHERE brcode=#{param3} 	
+	</update>
+ -->
+ 
+	<update id="br_updateDao">
+		UPDATE b_borrow SET bstate=#{param1}, rdate=#{param2} WHERE brcode=#{param3} 	
+	</update>
+
+	<update id="rbcodeDao">
+		UPDATE b_borrow SET brbcode=#{param1} WHERE brcode=#{param2} 	
+	</update>
+	
+	<select id="checkbrbcodeDao" resultType="int">
+		SELECT COUNT(*) FROM b_book WHERE bcode = #{param1}
+	</select>
+	
+	<select id="checkhavebcodeDao" resultType="int">
+		SELECT COUNT(*) FROM b_borrow WHERE brbcode = #{param1}
+	</select>
+	
+	<select id="checkbrmidDao" resultType="int">
+		SELECT COUNT(*) FROM b_member WHERE mid = #{param1}
+	</select>
+	
+</mapper>
+
+
+
