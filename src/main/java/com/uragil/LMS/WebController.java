@@ -126,12 +126,12 @@ public class WebController {
 		model.addAttribute("checkPw", checkPw);
 
 		if (checkId == 0) {
-			model.addAttribute("message", "User ID does not exist.");
+			model.addAttribute("message", "아이디 불 일치");
 			return "loginError";
 		}
 
 		if (checkPw == 0) {
-			model.addAttribute("message", "Password does not match.");
+			model.addAttribute("message", "비밀번호 불 일치");
 			return "loginError";
 		}
 
@@ -148,6 +148,17 @@ public class WebController {
 
 		return "loginOk";
 	}
+
+	@RequestMapping(value = "/logout")
+	public String logout(HttpServletRequest request) {
+		// 현재 세션을 가져옴
+		HttpSession session = request.getSession(false); // false는 세션이 없을 경우 새로 생성하지 않음을 의미
+		if (session != null) {
+			session.invalidate(); // 세션 무효화
+		}
+		return "redirect:/login"; // 로그아웃 후 로그인 페이지로 리다이렉트
+	}
+
 
 
 	@RequestMapping(value ="/member_list")

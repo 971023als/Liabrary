@@ -18,7 +18,11 @@
         <tr height="500">
             <td bgcolor="#f8d7da" align="center">
                 <h2 style="color: #721c24;">로그인 실패</h2>
-                <p style="color: #721c24;">아이디 또는 비밀번호가 올바르지 않습니다.</p>
+                <%
+                    // 서버 콘솔에 message 속성 값 출력
+                    System.out.println(request.getAttribute("message"));
+                %>
+                <p style="color: #721c24;"><%= request.getAttribute("message") %></p>
                 <p>다시 시도해 주세요.</p>
                 <hr>
                 <input class="button03" type="button" value="이전으로" onclick="history.go(-1);">
