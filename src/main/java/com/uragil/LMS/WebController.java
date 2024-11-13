@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.dao.DuplicateKeyException;
+
 
 import com.uragil.LMS.dao.IDao;
 import com.uragil.LMS.dto.BookDto;
@@ -79,39 +81,47 @@ public class WebController {
 		
 		return "join";
 	}
-	
-	
+
+
 	@RequestMapping(value ="/joinOk", method=RequestMethod.POST)
 	public String joinOk(HttpServletRequest request, Model model) {
 		String mid = request.getParameter("mid");
 		String mpw = request.getParameter("mpw");
 		String mname = request.getParameter("mname");
 		String mphone = request.getParameter("mphone");
-						
+
 		IDao dao = sqlSession.getMapper(IDao.class);
-		
+
 		int checkId = dao.checkIdDao(mid);
-		
+		System.out.println("Check ID result for " + mid + ": " + checkId); // Log check result
+
 		if (checkId != 1) {
-		
-			dao.joinDao(mid, mpw, mname, mphone);
-			
+			try {
+				dao.joinDao(mid, mpw, mname, mphone);
+			} catch (DuplicateKeyException e) {
+				System.out.println("Duplicate Key Exception: " + e.getMessage());
+				model.addAttribute("error", "Duplicate entry for ID: " + mid);
+				return "joinError"; // Return an error page
+			}
+
 			HttpSession session = request.getSession();
-			
 			session.setAttribute("id", mid);
 			session.setAttribute("name", mname);
-			
+
 			model.addAttribute("mname", mname);
 			model.addAttribute("mid", mid);
+		} else {
+			model.addAttribute("error", "ID already exists: " + mid);
 		}
-		
+
 		model.addAttribute("checkId", checkId);
-		
+
 		return "joinOk";
 	}
 
 
-	@RequestMapping(value = "/loginOk", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/loginOk", method = RequestMethod.POST)
 	public String loginOk(HttpServletRequest request, Model model) {
 
 		String mid = request.getParameter("mid");
@@ -124,6 +134,9 @@ public class WebController {
 
 		model.addAttribute("checkId", checkId);
 		model.addAttribute("checkPw", checkPw);
+
+		System.out.println("Check ID result: " + checkId); // 디버그 로그
+		System.out.println("Check Password result: " + checkPw); // 디버그 로그
 
 		if (checkId == 0) {
 			model.addAttribute("message", "아이디 불 일치");
@@ -148,6 +161,7 @@ public class WebController {
 
 		return "loginOk";
 	}
+
 
 	@RequestMapping(value = "/logout")
 	public String logout(HttpServletRequest request) {

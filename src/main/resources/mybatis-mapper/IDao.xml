@@ -12,23 +12,19 @@
 
 
 	<select id="checkIdDao" resultType="int">
-		SELECT CASE
-				   WHEN (SELECT ASCII(SUBSTR(mid, 1, 1)) FROM b_member WHERE mid = #{param1}) = #{param2}
-					   THEN 1
-				   ELSE 0
-				   END
-		FROM DUAL
+		SELECT COUNT(*)
+		FROM b_member
+		WHERE mid = #{param1}
 	</select>
+
 
 
 	<select id="checkPwDao" resultType="int">
-		SELECT CASE
-				   WHEN (SELECT ASCII(SUBSTR(mpw, 1, 1)) FROM b_member WHERE mid = #{param1}) = #{param2}
-					   THEN 1
-				   ELSE 0
-				   END
-		FROM DUAL
+		SELECT COUNT(*)
+		FROM b_member
+		WHERE mid = #{param1} AND mpw = #{param2}
 	</select>
+
 
 
 	<select id="loginInfoDao" resultType="com.uragil.LMS.dto.MemberDto">

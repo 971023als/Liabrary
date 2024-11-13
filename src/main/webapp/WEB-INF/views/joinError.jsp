@@ -4,7 +4,6 @@
 <html>
 <head>
   <meta charset="UTF-8">
-
   <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/join.js"></script>
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/member.css?after">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css?after">
@@ -20,7 +19,9 @@
     <tr height="500">
       <td bgcolor="#f8d7da" align="center">
         <%
-          int checkId = Integer.parseInt(request.getAttribute("checkId").toString());
+          Object checkIdObj = request.getAttribute("checkId");
+          int checkId = (checkIdObj != null) ? Integer.parseInt(checkIdObj.toString()) : -1; // null일 경우 -1 설정
+
           if(checkId == 1) {
         %>
         <div style="color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px;">
@@ -42,7 +43,7 @@
         %>
         <hr>
         <input class="button03" type="button" value="다시 시도" onclick="location.href='joinForm'">
-        <input class="button03" type="button" value="홈으로" onclick="location.href='home'">
+        <input class="button03" type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath }/index'">
       </td>
     </tr>
   </table>
